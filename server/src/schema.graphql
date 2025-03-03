@@ -1,0 +1,54 @@
+type Query {
+  """
+  Get the name of this application
+  """
+  appName: String
+
+  """
+  Get all posted products
+  """
+  allProducts: [Product!]!
+
+  """
+  Products by Category
+  """
+  productsByCategory(
+    "slug"
+    slug: String!
+  ): [Product!]!
+
+  """
+  Get all products published by an author
+  """
+  productsByAuthor(
+    "author's username"
+    authorName: String!
+  ): [Product!]!
+
+  """
+  Get all categories
+  """
+  allCategories: [Category!]!
+}
+
+type User {
+  id: ID!,
+  userName: String!,
+  fullName: String!,
+}
+
+type Product {
+  name: String!,
+  description: String!,
+  url: String!,
+  numberOfVotes: Int!,
+  publishedAt: String!,
+  author: User!,
+  categories: [Category!]!
+}
+
+type Category {
+    id: ID!,
+    name: String!,
+    slug: String!,
+}
